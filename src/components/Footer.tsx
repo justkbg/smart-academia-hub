@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Github, Mail, Twitter } from 'lucide-react';
-import upsaLogo from '/lovable-uploads/7edcbddd-abf2-44c4-8066-32edd1d5304c.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,7 +11,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
             <div className="flex items-center">
-              <img src={upsaLogo} alt="UPSA Logo" className="h-16 mr-3" />
+              <div className="h-16 w-16 mr-3 bg-blue-800 rounded-full flex items-center justify-center text-white font-bold">
+                UPSA
+              </div>
               <h3 className="text-xl font-semibold flex flex-col">
                 <span>IT13</span>
                 <span className="text-upsa-gold">UPSA</span>
