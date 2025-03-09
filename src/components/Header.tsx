@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X, BookOpen, Bell, ShoppingCart, Calendar, QrCode } from 'lucide-react';
+import upsaLogo from '/lovable-uploads/7edcbddd-abf2-44c4-8066-32edd1d5304c.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +35,8 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <span className="font-bold text-xl text-upsa-blue flex items-center gap-1">
+            <img src={upsaLogo} alt="UPSA Logo" className="h-12 mr-2" />
+            <span className="font-bold text-xl text-upsa-blue hidden sm:flex items-center gap-1">
               <span className="text-2xl">IT13</span>
               <span className="text-upsa-gold">UPSA</span>
             </span>

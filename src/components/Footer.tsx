@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Github, Mail, Twitter } from 'lucide-react';
+import upsaLogo from '/lovable-uploads/7edcbddd-abf2-44c4-8066-32edd1d5304c.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,10 +11,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold flex items-center">
-              <span>IT13</span>
-              <span className="text-upsa-gold ml-1">UPSA</span>
-            </h3>
+            <div className="flex items-center">
+              <img src={upsaLogo} alt="UPSA Logo" className="h-16 mr-3" />
+              <h3 className="text-xl font-semibold flex flex-col">
+                <span>IT13</span>
+                <span className="text-upsa-gold">UPSA</span>
+              </h3>
+            </div>
             <p className="text-blue-100 text-sm max-w-xs">
               Enhancing student learning, attendance tracking, and academic productivity using AI and modern technologies.
             </p>
