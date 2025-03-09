@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { PresentationIcon, Mic, Monitor, FileSlides } from 'lucide-react';
+import { PresentationIcon, Mic, Monitor, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -38,7 +38,7 @@ const PresentationsPage = () => {
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
                   <div className="h-12 w-12 rounded-lg bg-upsa-blue/10 flex items-center justify-center flex-shrink-0">
-                    <FileSlides className="h-6 w-6 text-upsa-blue" />
+                    <FileText className="h-6 w-6 text-upsa-blue" />
                   </div>
                   <div>
                     <h3 className="text-lg font-medium">AI Slide Generator</h3>
