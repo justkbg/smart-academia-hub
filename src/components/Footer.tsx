@@ -11,9 +11,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
             <div className="flex items-center">
-              <div className="h-16 w-16 mr-3 bg-blue-800 rounded-full flex items-center justify-center text-white font-bold">
-                UPSA
-              </div>
+              <img 
+                src="/lovable-uploads/1645d928-1e17-4029-a833-4ec75239024b.png" 
+                alt="UPSA Logo" 
+                className="h-16 w-auto mr-3 bg-white p-1 rounded" 
+              />
               <h3 className="text-xl font-semibold flex flex-col">
                 <span>IT13</span>
                 <span className="text-upsa-gold">UPSA</span>

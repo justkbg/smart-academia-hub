@@ -34,9 +34,11 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <div className="h-12 w-12 mr-2 bg-blue-800 rounded-full flex items-center justify-center text-white font-bold">
-              UPSA
-            </div>
+            <img 
+              src="/lovable-uploads/1645d928-1e17-4029-a833-4ec75239024b.png" 
+              alt="UPSA Logo" 
+              className="h-12 mr-2" 
+            />
             <span className="font-bold text-xl text-upsa-blue hidden sm:flex items-center gap-1">
               <span className="text-2xl">IT13</span>
               <span className="text-upsa-gold">UPSA</span>
