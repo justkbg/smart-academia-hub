@@ -4,13 +4,16 @@ import { QrCode, Smartphone, Scan, UserCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import QRCodeScanner from '@/components/QRCodeScanner';
+import QRCodeGenerator from '@/components/QRCodeGenerator';
+import StudentDashboard from '@/components/StudentDashboard';
 
 const AttendancePage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      <main className="flex-grow py-16">
+      <main className="flex-grow py-16 pt-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6">
@@ -20,6 +23,8 @@ const AttendancePage = () => {
               Our cutting-edge attendance tracking system makes recording and monitoring class attendance simple, secure, and efficient.
             </p>
           </div>
+          
+          <StudentDashboard />
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
             <div className="space-y-6">
@@ -65,10 +70,10 @@ const AttendancePage = () => {
               </Button>
             </div>
             
-            <div className="bg-gray-100 rounded-lg p-6 h-[400px] flex items-center justify-center">
-              <div className="text-center text-gray-500">
-                <UserCheck className="h-16 w-16 mx-auto mb-4 text-upsa-blue/60" />
-                <p className="text-lg">Attendance dashboard preview coming soon</p>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold mb-4">Quick QR Code Generator</h3>
+                <QRCodeGenerator />
               </div>
             </div>
           </div>
@@ -77,17 +82,17 @@ const AttendancePage = () => {
             <h2 className="text-3xl font-semibold text-center mb-12">Attendance Features</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="p-6 border border-gray-200 rounded-lg">
+              <div className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm">
                 <h3 className="text-xl font-medium mb-3">Real-time Statistics</h3>
                 <p className="text-gray-600">Monitor your attendance rates and view detailed analytics on your attendance patterns.</p>
               </div>
               
-              <div className="p-6 border border-gray-200 rounded-lg">
+              <div className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm">
                 <h3 className="text-xl font-medium mb-3">Auto Notifications</h3>
                 <p className="text-gray-600">Receive alerts when your attendance falls below required thresholds.</p>
               </div>
               
-              <div className="p-6 border border-gray-200 rounded-lg">
+              <div className="p-6 border border-gray-200 rounded-lg bg-white shadow-sm">
                 <h3 className="text-xl font-medium mb-3">Attendance Reports</h3>
                 <p className="text-gray-600">Download or share official attendance reports for administrative purposes.</p>
               </div>

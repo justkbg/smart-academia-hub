@@ -1,0 +1,66 @@
+
+export interface Student {
+  id: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  fullName: string;
+}
+
+export const students: Student[] = [
+  { id: "10316444", firstName: "JACOB", lastName: "APOYONBILA", phone: "0537103367", fullName: "JACOB APOYONBILA" },
+  { id: "10316806", firstName: "BRIGHT", lastName: "AGYAPONG", phone: "0500314051", fullName: "BRIGHT AGYAPONG" },
+  { id: "10317834", firstName: "FREDERICK OWUSU", lastName: "KODUA", phone: "0543557479", fullName: "FREDERICK OWUSU KODUA" },
+  { id: "10318408", firstName: "ABASS", lastName: "ALHASSAN", phone: "0554763944", fullName: "ABASS ALHASSAN" },
+  { id: "10318416", firstName: "NOELLA NANA YAA EYIRAM", lastName: "AYESU", phone: "0244664258", fullName: "NOELLA NANA YAA EYIRAM AYESU" },
+  { id: "10318534", firstName: "RICHARD KWAME", lastName: "GHUNNEY", phone: "0256231376", fullName: "RICHARD KWAME GHUNNEY" },
+  { id: "10318545", firstName: "WADUDU", lastName: "SULEMANA", phone: "0559952548", fullName: "WADUDU SULEMANA" },
+  { id: "10318607", firstName: "EDWARD", lastName: "AMOAH", phone: "0538684101", fullName: "EDWARD AMOAH" },
+  { id: "10318608", firstName: "IRENE EWURABENA", lastName: "OFOSUHENE", phone: "0594947185", fullName: "IRENE EWURABENA OFOSUHENE" },
+  { id: "10319497", firstName: "ABDUL-HAFEEZ", lastName: "SEIDU", phone: "0545334764", fullName: "ABDUL-HAFEEZ SEIDU" },
+  { id: "10319498", firstName: "GILBERT", lastName: "TWENEBOA-KODUA", phone: "0244203857", fullName: "GILBERT TWENEBOA-KODUA" },
+  { id: "10319995", firstName: "ABRAHAM ASIWOME", lastName: "KPENDO", phone: "0532370080", fullName: "ABRAHAM ASIWOME KPENDO" },
+  { id: "10320032", firstName: "LUKMAN", lastName: "YAKUBU", phone: "0257243617", fullName: "LUKMAN YAKUBU" },
+  { id: "10320036", firstName: "MICHAEL NANA", lastName: "DAPAAH", phone: "0599440667", fullName: "MICHAEL NANA DAPAAH" },
+  { id: "10320042", firstName: "DANIEL BARIMAH", lastName: "TWUM", phone: "0247691333", fullName: "DANIEL BARIMAH TWUM" },
+  { id: "10320052", firstName: "KORKOR", lastName: "NDEDE KOJO", phone: "0209757590", fullName: "KORKOR NDEDE KOJO" },
+  { id: "10320090", firstName: "VALERIO", lastName: "AGYAPONG", phone: "0530190602", fullName: "VALERIO AGYAPONG" },
+  { id: "10320100", firstName: "MARIWAN", lastName: "ABDULAI", phone: "0535456033", fullName: "MARIWAN ABDULAI" },
+  { id: "10322357", firstName: "EMELIA MARIAM NAA OKAILEY", lastName: "ADAMS", phone: "0205448709", fullName: "EMELIA MARIAM NAA OKAILEY ADAMS" },
+  { id: "10322388", firstName: "ELEAZER ELIKEM", lastName: "QUAMPAH", phone: "0204620685", fullName: "ELEAZER ELIKEM QUAMPAH" },
+  { id: "10322399", firstName: "DAPHNE NADINE", lastName: "ASUBONTENG", phone: "0244292627", fullName: "DAPHNE NADINE ASUBONTENG" },
+  { id: "10322450", firstName: "GABRIEL AWENTEMI", lastName: "ATUIMAH", phone: "0201861591", fullName: "GABRIEL AWENTEMI ATUIMAH" },
+  { id: "10322492", firstName: "NATHANIEL OTENG", lastName: "DUODU", phone: "0598334930", fullName: "NATHANIEL OTENG DUODU" },
+  { id: "10322498", firstName: "PHILIP JOE", lastName: "TETTEH", phone: "0535564354", fullName: "PHILIP JOE TETTEH" },
+  { id: "10322505", firstName: "KWABENA BOATENG", lastName: "GYASI", phone: "0502256660", fullName: "KWABENA BOATENG GYASI" },
+  { id: "10322513", firstName: "JOYCE AKOSUA ANIMWAA", lastName: "DEBRAH", phone: "0535931303", fullName: "JOYCE AKOSUA ANIMWAA DEBRAH" },
+  { id: "10322514", firstName: "ADIL TIYUMTABA", lastName: "ZAKARIAH", phone: "0201517075", fullName: "ADIL TIYUMTABA ZAKARIAH" },
+  { id: "10322524", firstName: "RAYAAN MWINIBALONNO", lastName: "SALIFU", phone: "0203785715", fullName: "RAYAAN MWINIBALONNO SALIFU" },
+  { id: "10322541", firstName: "FERDINAND", lastName: "DJAN", phone: "0208528902", fullName: "FERDINAND DJAN" },
+  { id: "10322549", firstName: "BERNICE AMA", lastName: "ANTWI", phone: "0550109705", fullName: "BERNICE AMA ANTWI" },
+  { id: "10322573", firstName: "PRINCE NANA KWESI", lastName: "EGLEH", phone: "0534375880", fullName: "PRINCE NANA KWESI EGLEH" },
+  { id: "10322583", firstName: "BRIGHT", lastName: "NKRUMAH", phone: "0539643986", fullName: "BRIGHT NKRUMAH" },
+  { id: "10322621", firstName: "NANA YAW SARFO", lastName: "APPIAH", phone: "0243108391", fullName: "NANA YAW SARFO APPIAH" },
+  { id: "10322623", firstName: "DUKE", lastName: "QUARM", phone: "0244611780", fullName: "DUKE QUARM" },
+  { id: "10322671", firstName: "MICHAEL", lastName: "AFFUL-ESHUN", phone: "0202173100", fullName: "MICHAEL AFFUL-ESHUN" },
+  { id: "10322676", firstName: "SOLOMON", lastName: "AYARAH", phone: "0543060277", fullName: "SOLOMON AYARAH" },
+  { id: "10322677", firstName: "RUTH WESONI", lastName: "TUMPI", phone: "0260927119", fullName: "RUTH WESONI TUMPI" },
+  { id: "10322692", firstName: "CYRIL KANNIETEY", lastName: "YARTEY", phone: "0505863881", fullName: "CYRIL KANNIETEY YARTEY" },
+  { id: "10322773", firstName: "JOSHUA YAW", lastName: "SEMANHYIA", phone: "0256789397", fullName: "JOSHUA YAW SEMANHYIA" },
+  { id: "10322804", firstName: "FREDRICA SEYRAM PRINCESS", lastName: "SELORMEY", phone: "0538556840", fullName: "FREDRICA SEYRAM PRINCESS SELORMEY" },
+  { id: "10322805", firstName: "SUFYAN SULLEY", lastName: "ABDUL SAMAD", phone: "0595311274", fullName: "SUFYAN SULLEY ABDUL SAMAD" },
+  { id: "10322807", firstName: "ERIC", lastName: "OBENG", phone: "0508782648", fullName: "ERIC OBENG" },
+  { id: "10322840", firstName: "DAVID SYLVESTER AMON", lastName: "KOTEY", phone: "0539052078", fullName: "DAVID SYLVESTER AMON KOTEY" },
+  { id: "10322863", firstName: "SHAKIR", lastName: "YAKUBU", phone: "0531696731", fullName: "SHAKIR YAKUBU" },
+  { id: "10322882", firstName: "HILLARY DARKO", lastName: "AKOTUAH", phone: "0532678575", fullName: "HILLARY DARKO AKOTUAH" },
+  { id: "10322897", firstName: "ELIKEM RAHMAN", lastName: "AMEVOR", phone: "0538173453", fullName: "ELIKEM RAHMAN AMEVOR" },
+  { id: "10322904", firstName: "SAMUEL ADU", lastName: "NYARKO", phone: "0596143427", fullName: "SAMUEL ADU NYARKO" },
+  { id: "10322913", firstName: "MAJESTY NANA ABA OTOA", lastName: "HAYFORD", phone: "0531914332", fullName: "MAJESTY NANA ABA OTOA HAYFORD" },
+  { id: "10322929", firstName: "BENJAMIN ADOTEY", lastName: "HAMMOND", phone: "0244369199", fullName: "BENJAMIN ADOTEY HAMMOND" },
+  { id: "10322963", firstName: "DEDO NAOMI", lastName: "TEI-WAYO", phone: "0202046673", fullName: "DEDO NAOMI TEI-WAYO" },
+  { id: "10322966", firstName: "KEVIN", lastName: "FRIMPONG", phone: "0261629209", fullName: "KEVIN FRIMPONG" },
+  { id: "10323156", firstName: "WILLIAM KWAME", lastName: "APPIAH", phone: "0598228564", fullName: "WILLIAM KWAME APPIAH" },
+  { id: "10323398", firstName: "DENNIS DUAH", lastName: "AGYEMANG", phone: "0548823734", fullName: "DENNIS DUAH AGYEMANG" },
+  { id: "10324780", firstName: "NANA YAW", lastName: "OWUSU", phone: "0530404058", fullName: "NANA YAW OWUSU" },
+  // Add remaining students...
+];
