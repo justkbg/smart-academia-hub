@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { QrScanner } from 'lucide-react';
+import { ScanLine, Camera } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -80,11 +80,11 @@ const QRCodeScanner = ({ onScan }: QRCodeScannerProps) => {
         <div className="w-64 h-64 bg-gray-100 flex items-center justify-center rounded-lg">
           {scanning ? (
             <div className="relative">
-              <QrScanner className="w-24 h-24 text-upsa-blue opacity-50" />
-              <div className="absolute inset-0 w-full h-full border-2 border-upsa-blue rounded animate-scan"></div>
+              <Camera className="w-24 h-24 text-upsa-blue opacity-50" />
+              <ScanLine className="absolute inset-0 w-full h-full text-upsa-blue animate-scanning" />
             </div>
           ) : (
-            <QrScanner className="w-24 h-24 text-upsa-blue" />
+            <Camera className="w-24 h-24 text-upsa-blue" />
           )}
         </div>
       </div>
