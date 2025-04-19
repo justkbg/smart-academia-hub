@@ -13,7 +13,8 @@ import {
   ExternalLink,
   BarChart,
   Database,
-  Image
+  Image,
+  BookOpen
 } from 'lucide-react';
 
 const AITools = () => {

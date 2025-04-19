@@ -85,7 +85,7 @@ const BentoGrid = () => {
     {
       title: "AI Presentations",
       description: "Create impressive presentations for your projects with our AI-powered tools",
-      icon: <PresentationIcon className="h-10 w-10 text-upsa-blue" />,
+      icon: <Presentation className="h-10 w-10 text-upsa-blue" />,
       color: "bg-indigo-50",
       link: "/presentations",
       size: "col-span-1 md:col-span-2 row-span-1"
