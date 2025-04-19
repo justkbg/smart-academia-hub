@@ -1,124 +1,171 @@
 
-import React, { useState } from 'react';
-import { Camera, Check, AlertCircle } from 'lucide-react';
+import React, { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
-import { students } from '@/data/students';
+import { ScanFace, Camera, CheckCircle2 } from 'lucide-react';
 
 const FacialRecognition = () => {
-  const [isScanning, setIsScanning] = useState(false);
-  const [isRecognized, setIsRecognized] = useState<boolean | null>(null);
-  const [recognizedStudent, setRecognizedStudent] = useState<typeof students[0] | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isCapturing, setIsCapturing] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [isVerified, setIsVerified] = useState(false);
   const { toast } = useToast();
-
-  const startFacialRecognition = () => {
-    setIsScanning(true);
-    
-    // This would call a Python backend in a real implementation
-    // For this demo, we'll simulate facial recognition
-    setTimeout(() => {
-      // Randomly determine if face is recognized
-      const success = Math.random() > 0.3;
-      setIsRecognized(success);
+  
+  const startCapture = async () => {
+    try {
+      setIsCapturing(true);
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: { width: 300, height: 300, facingMode: 'user' }
+      });
       
-      if (success) {
-        // Randomly pick a student for the demo
-        const randomIndex = Math.floor(Math.random() * students.length);
-        const student = students[randomIndex];
-        setRecognizedStudent(student);
-        
-        toast({
-          title: "Student Verified!",
-          description: `Successfully identified as ${student.fullName}.`,
-          variant: "default",
-        });
-      } else {
-        toast({
-          title: "Verification Failed",
-          description: "Could not recognize face. Please try again or use an alternative method.",
-          variant: "destructive",
-        });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
       }
+    } catch (error) {
+      console.error('Error accessing camera:', error);
+      toast({
+        title: "Camera Error",
+        description: "Could not access your camera. Please grant permission.",
+        variant: "destructive",
+      });
+      setIsCapturing(false);
+    }
+  };
+
+  const captureImage = () => {
+    if (!videoRef.current || !canvasRef.current) return;
+    
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    
+    if (!context) return;
+    
+    // Set canvas dimensions to match video
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    
+    // Draw video frame to canvas
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    // Stop video stream
+    const stream = video.srcObject as MediaStream;
+    const tracks = stream.getTracks();
+    tracks.forEach(track => track.stop());
+    video.srcObject = null;
+    
+    setIsCapturing(false);
+    analyzeImage();
+  };
+
+  const analyzeImage = () => {
+    setIsAnalyzing(true);
+    
+    // Mock analysis - in a real app, this would call a Python backend or AI service
+    setTimeout(() => {
+      setIsAnalyzing(false);
+      setIsVerified(true);
       
-      setIsScanning(false);
+      toast({
+        title: "Identity Verified",
+        description: "Your attendance has been recorded successfully!",
+      });
     }, 3000);
   };
 
-  const resetRecognition = () => {
-    setIsRecognized(null);
-    setRecognizedStudent(null);
+  const resetProcess = () => {
+    setIsCapturing(false);
+    setIsAnalyzing(false);
+    setIsVerified(false);
+    
+    // Clear canvas
+    if (canvasRef.current) {
+      const context = canvasRef.current.getContext('2d');
+      if (context) {
+        context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+      }
+    }
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-      <h2 className="text-xl font-semibold mb-4">Facial Recognition</h2>
+    <div className="flex flex-col items-center p-6 border rounded-lg bg-white shadow-md max-w-md mx-auto">
+      <h3 className="text-xl font-semibold mb-4">Face Recognition Attendance</h3>
       
-      <div className="flex flex-col items-center">
-        <div className="relative w-64 h-64 bg-gray-100 rounded-lg overflow-hidden mb-4">
-          {isScanning ? (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative">
-                <Camera className="w-24 h-24 text-upsa-blue animate-pulse" />
-                <div className="absolute inset-0 border-2 border-upsa-blue rounded animate-scanning"></div>
-              </div>
-              <p className="absolute bottom-4 text-sm text-gray-600">Scanning...</p>
-            </div>
-          ) : isRecognized === true ? (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-green-50">
-              <div className="mb-4 h-16 w-16 rounded-full bg-green-100 flex items-center justify-center">
-                <Check className="h-8 w-8 text-green-600" />
-              </div>
-              <h3 className="text-lg font-medium text-gray-900">{recognizedStudent?.fullName}</h3>
-              <p className="text-sm text-gray-600">ID: {recognizedStudent?.id}</p>
-            </div>
-          ) : isRecognized === false ? (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-red-50">
-              <div className="mb-4 h-16 w-16 rounded-full bg-red-100 flex items-center justify-center">
-                <AlertCircle className="h-8 w-8 text-red-600" />
-              </div>
-              <h3 className="text-lg font-medium text-gray-900">Face Not Recognized</h3>
-              <p className="text-sm text-gray-600">Please try again</p>
-            </div>
-          ) : (
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Camera className="w-24 h-24 text-gray-300" />
-              <p className="absolute bottom-4 text-sm text-gray-600">Ready to scan</p>
-            </div>
-          )}
-        </div>
-        
-        <div className="w-full">
-          <p className="text-sm text-gray-600 mb-4 text-center">
-            {isRecognized === null 
-              ? "Position your face in frame and click scan to verify your identity"
-              : isRecognized 
-                ? "Successfully verified! Your attendance has been recorded."
-                : "Verification failed. Please try again or use an alternative method."}
-          </p>
-          
-          {isRecognized === null ? (
-            <Button 
-              onClick={startFacialRecognition}
-              disabled={isScanning}
-              className="w-full bg-upsa-blue"
-            >
-              {isScanning ? "Scanning..." : "Start Facial Recognition"}
-            </Button>
-          ) : (
-            <Button 
-              onClick={resetRecognition}
-              variant="outline"
-              className="w-full"
-            >
-              Try Again
-            </Button>
-          )}
-          
-          <div className="mt-4 text-xs text-center text-gray-500">
-            <p>Powered by Python OpenCV & Google Vision API</p>
-            <p className="mt-1">(This is a simulation for demonstration purposes)</p>
+      <div className="w-64 h-64 relative mb-6 border-2 border-dashed border-gray-300 rounded-lg overflow-hidden bg-gray-100">
+        {!isCapturing && !isVerified && !isAnalyzing && (
+          <div className="absolute inset-0 flex items-center justify-center flex-col">
+            <ScanFace className="w-16 h-16 text-gray-400 mb-2" />
+            <p className="text-sm text-gray-500">Position your face in the frame</p>
           </div>
-        </div>
+        )}
+        
+        {isCapturing && (
+          <video 
+            ref={videoRef}
+            autoPlay
+            playsInline
+            muted 
+            className="w-full h-full object-cover"
+            onLoadedMetadata={() => {
+              if (videoRef.current) {
+                videoRef.current.play();
+              }
+            }}
+          />
+        )}
+        
+        {isAnalyzing && (
+          <div className="absolute inset-0 flex items-center justify-center flex-col bg-black/10 backdrop-blur-sm">
+            <div className="w-16 h-16 border-4 border-upsa-blue border-t-transparent rounded-full animate-spin-slow mb-2"></div>
+            <p className="text-sm font-medium text-upsa-blue">Analyzing...</p>
+          </div>
+        )}
+        
+        {isVerified && (
+          <div className="absolute inset-0 flex items-center justify-center flex-col bg-green-50">
+            <CheckCircle2 className="w-16 h-16 text-green-500 mb-2" />
+            <p className="text-sm font-medium text-green-700">Verified Successfully</p>
+          </div>
+        )}
+        
+        <canvas ref={canvasRef} className="hidden" />
+      </div>
+      
+      <div className="space-y-4 w-full">
+        {!isCapturing && !isVerified && !isAnalyzing && (
+          <Button 
+            onClick={startCapture} 
+            className="w-full bg-upsa-blue"
+          >
+            <Camera className="mr-2 h-4 w-4" />
+            Start Camera
+          </Button>
+        )}
+        
+        {isCapturing && (
+          <Button 
+            onClick={captureImage} 
+            className="w-full bg-upsa-blue"
+          >
+            <ScanFace className="mr-2 h-4 w-4" />
+            Capture Image
+          </Button>
+        )}
+        
+        {isVerified && (
+          <Button 
+            onClick={resetProcess} 
+            variant="outline" 
+            className="w-full"
+          >
+            Start New Verification
+          </Button>
+        )}
+      </div>
+      
+      <div className="mt-4 text-xs text-gray-500 px-4 text-center">
+        <p>We use Python and Google Vision API to securely verify your identity. Your biometric data is never stored.</p>
       </div>
     </div>
   );

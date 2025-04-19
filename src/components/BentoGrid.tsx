@@ -15,8 +15,17 @@ import {
   Lightbulb
 } from 'lucide-react';
 
+interface BentoItem {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  color: string;
+  link: string;
+  size: string;
+}
+
 const BentoGrid = () => {
-  const items = [
+  const items: BentoItem[] = [
     {
       title: "Smart Attendance",
       description: "Track your attendance efficiently with our QR code and facial recognition system",
@@ -115,7 +124,7 @@ const BentoGrid = () => {
   };
 
   return (
-    <section className="py-16 px-4 md:px-6 bg-white">
+    <section id="bento-grid" className="py-16 px-4 md:px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -136,7 +145,7 @@ const BentoGrid = () => {
           {items.map((item, index) => (
             <motion.div
               key={index}
-              className={`${item.size} ${item.color} rounded-2xl p-6 hover:shadow-lg transition-all duration-300 overflow-hidden relative group`}
+              className={`${item.size} ${item.color} rounded-2xl p-6 hover:shadow-lg transition-all duration-300 overflow-hidden relative group hover:-translate-y-1`}
               variants={item}
             >
               <Link to={item.link} className="absolute inset-0 z-10" aria-label={item.title}></Link>

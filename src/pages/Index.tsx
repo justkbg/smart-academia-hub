@@ -1,5 +1,4 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import FeaturesGrid from '../components/FeaturesGrid';
@@ -12,6 +11,8 @@ import BentoGrid from '../components/BentoGrid';
 import Footer from '../components/Footer';
 
 const Index = () => {
+  const pageRef = useRef(null);
+
   // Smooth scrolling for anchor links
   useEffect(() => {
     // Add smooth scroll behavior to all links
@@ -78,7 +79,13 @@ const Index = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+          // Keep observing for sections that might go out of view and come back
+          if (!entry.target.classList.contains('always-observe')) {
+            observer.unobserve(entry.target);
+          }
+        } else if (entry.target.classList.contains('always-observe')) {
+          // If it's not intersecting and should always be observed, remove visibility
+          entry.target.classList.remove('is-visible');
         }
       });
     };
@@ -97,8 +104,23 @@ const Index = () => {
     };
   }, []);
 
+  // Parallax scrolling effect
+  useEffect(() => {
+    const handleParallax = () => {
+      const scrolled = window.scrollY;
+      document.querySelectorAll('.parallax').forEach((element) => {
+        const el = element as HTMLElement;
+        const speed = parseFloat(el.getAttribute('data-speed') || '0.5');
+        el.style.transform = `translateY(${scrolled * speed}px)`;
+      });
+    };
+
+    window.addEventListener('scroll', handleParallax);
+    return () => window.removeEventListener('scroll', handleParallax);
+  }, []);
+
   return (
-    <div className="page-transition min-h-screen flex flex-col">
+    <div ref={pageRef} className="page-transition min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow">
         <Hero />

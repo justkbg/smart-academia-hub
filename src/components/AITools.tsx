@@ -1,112 +1,245 @@
 
 import React from 'react';
-import { Brain, BookOpen, FileText, PresentationIcon, Bot, Code, Wand2 } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { students } from '@/data/students';
-
-const getRandomStudent = () => {
-  const randomIndex = Math.floor(Math.random() * students.length);
-  return students[randomIndex];
-};
+import { 
+  Brain, 
+  FileText, 
+  Code, 
+  PenTool, 
+  Presentation, 
+  BookOpen, 
+  Calculator, 
+  ExternalLink,
+  BarChart,
+  Database,
+  Search,
+  LayoutPresentationIcon,
+  MessageSquare,
+  Video,
+  Image
+} from 'lucide-react';
 
 const AITools = () => {
-  // Get random students for each tool recommendation
-  const recommendedBy1 = getRandomStudent();
-  const recommendedBy2 = getRandomStudent();
-  const recommendedBy3 = getRandomStudent();
-  const recommendedBy4 = getRandomStudent();
-  const recommendedBy5 = getRandomStudent();
-  const recommendedBy6 = getRandomStudent();
-
   const tools = [
     {
-      name: "Claude AI Assistant",
-      description: "Powerful AI assistant for research, writing, and problem-solving",
-      icon: <Bot className="h-6 w-6" />,
-      url: "https://claude.ai",
-      tags: ["Research", "Writing", "Problem-Solving"],
-      recommendedBy: recommendedBy1
+      title: "ChatGPT",
+      description: "AI-powered chat assistant for homework help, essay writing, and programming support.",
+      icon: <MessageSquare className="h-7 w-7 text-green-600" />,
+      color: "bg-green-50",
+      url: "https://chat.openai.com/",
+      category: "General AI"
     },
     {
-      name: "GitHub Copilot",
-      description: "AI pair programmer that helps you write code faster with less work",
-      icon: <Code className="h-6 w-6" />,
-      url: "https://github.com/features/copilot",
-      tags: ["Coding", "Productivity", "Programming"],
-      recommendedBy: recommendedBy2
+      title: "Perplexity AI",
+      description: "AI search engine perfect for research papers and presentations with accurate citations.",
+      icon: <Search className="h-7 w-7 text-purple-600" />,
+      color: "bg-purple-50",
+      url: "https://www.perplexity.ai/",
+      category: "Research"
     },
     {
-      name: "Tome AI",
-      description: "Generate professional presentations instantly with AI",
-      icon: <PresentationIcon className="h-6 w-6" />,
-      url: "https://tome.app",
-      tags: ["Presentations", "Slides", "Communication"],
-      recommendedBy: recommendedBy3
+      title: "Tome AI",
+      description: "Create interactive AI-powered presentations for your IT projects and assignments.",
+      icon: <LayoutPresentationIcon className="h-7 w-7 text-pink-600" />,
+      color: "bg-pink-50",
+      url: "https://tome.app/",
+      category: "Presentations"
     },
     {
-      name: "Otter.ai",
-      description: "AI meeting assistant that records, transcribes, and summarizes",
-      icon: <FileText className="h-6 w-6" />,
-      url: "https://otter.ai",
-      tags: ["Notes", "Transcription", "Meetings"],
-      recommendedBy: recommendedBy4
+      title: "Claude AI",
+      description: "A helpful AI assistant for complex conceptual understanding of IT topics with long-context analysis.",
+      icon: <Brain className="h-7 w-7 text-blue-600" />,
+      color: "bg-blue-50",
+      url: "https://claude.ai/",
+      category: "General AI"
     },
     {
-      name: "Notion AI",
-      description: "AI writing assistant integrated with Notion for notes and documents",
-      icon: <Brain className="h-6 w-6" />,
-      url: "https://notion.so",
-      tags: ["Notes", "Writing", "Organization"],
-      recommendedBy: recommendedBy5
+      title: "Replit",
+      description: "AI-powered coding environment for programming practice and project collaboration.",
+      icon: <Code className="h-7 w-7 text-gray-600" />,
+      color: "bg-gray-50",
+      url: "https://replit.com/",
+      category: "Programming"
     },
     {
-      name: "Midjourney",
-      description: "AI image generation for creating visuals for projects and presentations",
-      icon: <Wand2 className="h-6 w-6" />,
-      url: "https://midjourney.com",
-      tags: ["Design", "Images", "Creative"],
-      recommendedBy: recommendedBy6
+      title: "DALL-E",
+      description: "Generate images for project illustrations and visual aids for presentations.",
+      icon: <Image className="h-7 w-7 text-teal-600" />,
+      color: "bg-teal-50",
+      url: "https://openai.com/dall-e-3",
+      category: "Creative"
+    },
+    {
+      title: "Notion AI",
+      description: "AI-enhanced note-taking for organizing lecture notes and assignments.",
+      icon: <FileText className="h-7 w-7 text-indigo-600" />,
+      color: "bg-indigo-50",
+      url: "https://www.notion.so/",
+      category: "Productivity"
+    },
+    {
+      title: "Beautiful.ai",
+      description: "Create professional slide decks for IT presentations with smart templates.",
+      icon: <Presentation className="h-7 w-7 text-red-600" />,
+      color: "bg-red-50",
+      url: "https://www.beautiful.ai/",
+      category: "Presentations"
+    },
+    {
+      title: "QuillBot",
+      description: "AI-powered writing assistant for improving your essays and reports.",
+      icon: <PenTool className="h-7 w-7 text-cyan-600" />,
+      color: "bg-cyan-50",
+      url: "https://quillbot.com/",
+      category: "Writing"
+    },
+    {
+      title: "Elicit",
+      description: "Research assistant to find and summarize academic papers for your IT research.",
+      icon: <BookOpen className="h-7 w-7 text-amber-600" />,
+      color: "bg-amber-50",
+      url: "https://elicit.org/",
+      category: "Research"
+    },
+    {
+      title: "Wolfram Alpha",
+      description: "Advanced computational knowledge engine for solving complex IT problems.",
+      icon: <Calculator className="h-7 w-7 text-orange-600" />,
+      color: "bg-orange-50",
+      url: "https://www.wolframalpha.com/",
+      category: "Computing"
+    },
+    {
+      title: "Khanmigo",
+      description: "AI tutor by Khan Academy for personalized learning help.",
+      icon: <Brain className="h-7 w-7 text-green-600" />,
+      color: "bg-green-50",
+      url: "https://www.khanacademy.org/khanmigo",
+      category: "Learning"
     }
   ];
 
+  // Generate student-specific AI tools using the IT13 student data
+  const studentSpecificTools = [
+    {
+      title: "Jacobs's Research Companion",
+      description: "Customized research assistant for APOYONBILA JACOB's projects and studies.",
+      icon: <BookOpen className="h-7 w-7 text-upsa-blue" />,
+      color: "bg-blue-50",
+      studentId: "10316444",
+      url: "#",
+      category: "Custom"
+    },
+    {
+      title: "Bright's Code Generator",
+      description: "AI code assistant customized for AGYAPONG BRIGHT's programming style and preferences.",
+      icon: <Code className="h-7 w-7 text-upsa-blue" />,
+      color: "bg-blue-50",
+      studentId: "10316806",
+      url: "#",
+      category: "Custom"
+    },
+    {
+      title: "Frederick's Data Analyzer",
+      description: "Data analytics tool customized for KODUA FREDERICK OWUSU's database projects.",
+      icon: <Database className="h-7 w-7 text-upsa-blue" />,
+      color: "bg-blue-50",
+      studentId: "10317834",
+      url: "#",
+      category: "Custom"
+    },
+    {
+      title: "Abass's Visualization Helper",
+      description: "AI-powered data visualization tool for ALHASSAN ABASS's statistics projects.",
+      icon: <BarChart className="h-7 w-7 text-upsa-blue" />,
+      color: "bg-blue-50",
+      studentId: "10318408",
+      url: "#",
+      category: "Custom"
+    },
+    {
+      title: "Noella's Presentation Creator",
+      description: "AI presentation generator optimized for AYESU NOELLA's presentation style.",
+      icon: <Presentation className="h-7 w-7 text-upsa-blue" />,
+      color: "bg-blue-50",
+      studentId: "10318416",
+      url: "#",
+      category: "Custom"
+    }
+  ];
+
+  // All available categories
+  const categories = ["All", "General AI", "Research", "Programming", "Productivity", "Presentations", "Writing", "Creative", "Learning", "Computing", "Custom"];
+  
+  // State for selected category
+  const [selectedCategory, setSelectedCategory] = React.useState("All");
+
+  // Filter tools based on selected category
+  const filteredTools = selectedCategory === "All" 
+    ? [...tools, ...studentSpecificTools]
+    : [...tools, ...studentSpecificTools].filter(tool => tool.category === selectedCategory);
+
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">AI Tools for IT13 Students</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {tools.map((tool, index) => (
-          <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-            <CardHeader className="bg-gradient-to-r from-upsa-blue/10 to-upsa-blue/5">
-              <div className="flex items-center gap-3">
-                <div className="p-2 bg-upsa-blue/10 rounded-lg">
+    <div className="px-4 py-6">
+      <div className="mb-8 text-center">
+        <h2 className="text-2xl font-bold text-gray-900 mb-3">AI-Powered Learning Tools</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto">
+          Enhance your learning experience with these powerful AI tools recommended for IT13 students.
+        </p>
+      </div>
+
+      {/* Categories filter */}
+      <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {categories.map(category => (
+          <Button
+            key={category}
+            variant={selectedCategory === category ? "default" : "outline"}
+            className={selectedCategory === category ? "bg-upsa-blue" : ""}
+            onClick={() => setSelectedCategory(category)}
+          >
+            {category}
+          </Button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {filteredTools.map((tool, index) => (
+          <Card key={index} className="hover:shadow-md transition-shadow overflow-hidden group hover-lift">
+            <div className={`${tool.color} h-2 w-full`}></div>
+            <CardHeader className="pb-2">
+              <div className="flex justify-between items-start">
+                <div className={`${tool.color} p-2 rounded-lg`}>
                   {tool.icon}
                 </div>
-                <CardTitle>{tool.name}</CardTitle>
+                <span className="text-xs bg-gray-100 rounded-full px-2 py-1 text-gray-600">
+                  {tool.category}
+                </span>
               </div>
+              <CardTitle className="mt-2">{tool.title}</CardTitle>
               <CardDescription>{tool.description}</CardDescription>
             </CardHeader>
-            <CardContent className="pt-4">
-              <div className="flex flex-wrap gap-2 mb-4">
-                {tool.tags.map((tag, tagIndex) => (
-                  <Badge key={tagIndex} variant="outline" className="bg-upsa-blue/5">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              <div className="text-sm text-gray-500">
-                <span className="font-medium">Recommended by:</span> {tool.recommendedBy.fullName}
-              </div>
-            </CardContent>
-            <CardFooter className="border-t bg-gray-50">
-              <Button asChild className="w-full">
+            <CardContent>
+              <Button asChild variant="outline" className="w-full group-hover:border-upsa-blue group-hover:text-upsa-blue transition-colors">
                 <a href={tool.url} target="_blank" rel="noopener noreferrer">
-                  Try it out
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  Open Tool
                 </a>
               </Button>
-            </CardFooter>
+            </CardContent>
           </Card>
         ))}
+      </div>
+
+      <div className="mt-10 text-center">
+        <h3 className="text-xl font-medium mb-3">AI Assignment Help</h3>
+        <p className="text-gray-600 max-w-2xl mx-auto mb-6">
+          Need personalized AI assistance for your assignments? Our system can generate custom AI tools for each student.
+        </p>
+        <Button className="bg-upsa-blue">
+          <Brain className="mr-2 h-4 w-4" />
+          Get Personalized AI Recommendation
+        </Button>
       </div>
     </div>
   );
