@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -8,15 +7,12 @@ import {
   Code, 
   PenTool, 
   Presentation, 
-  BookOpen, 
-  Calculator, 
+  MessageSquare,
+  Search,
+  Calculator,
   ExternalLink,
   BarChart,
   Database,
-  Search,
-  LayoutPresentationIcon,
-  MessageSquare,
-  Video,
   Image
 } from 'lucide-react';
 
@@ -41,7 +37,7 @@ const AITools = () => {
     {
       title: "Tome AI",
       description: "Create interactive AI-powered presentations for your IT projects and assignments.",
-      icon: <LayoutPresentationIcon className="h-7 w-7 text-pink-600" />,
+      icon: <Presentation className="h-7 w-7 text-pink-600" />,
       color: "bg-pink-50",
       url: "https://tome.app/",
       category: "Presentations"
@@ -120,7 +116,6 @@ const AITools = () => {
     }
   ];
 
-  // Generate student-specific AI tools using the IT13 student data
   const studentSpecificTools = [
     {
       title: "Jacobs's Research Companion",
@@ -169,13 +164,10 @@ const AITools = () => {
     }
   ];
 
-  // All available categories
   const categories = ["All", "General AI", "Research", "Programming", "Productivity", "Presentations", "Writing", "Creative", "Learning", "Computing", "Custom"];
   
-  // State for selected category
   const [selectedCategory, setSelectedCategory] = React.useState("All");
 
-  // Filter tools based on selected category
   const filteredTools = selectedCategory === "All" 
     ? [...tools, ...studentSpecificTools]
     : [...tools, ...studentSpecificTools].filter(tool => tool.category === selectedCategory);
@@ -189,7 +181,6 @@ const AITools = () => {
         </p>
       </div>
 
-      {/* Categories filter */}
       <div className="flex flex-wrap justify-center gap-2 mb-8">
         {categories.map(category => (
           <Button

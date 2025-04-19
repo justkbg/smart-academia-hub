@@ -1,13 +1,13 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { 
   QrCode, 
   BookOpen, 
   Calendar, 
   ShoppingCart, 
-  PresentationIcon,
+  Presentation,
   Brain,
   Users,
   BarChart3,
@@ -108,7 +108,7 @@ const BentoGrid = () => {
     }
   ];
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -118,7 +118,7 @@ const BentoGrid = () => {
     }
   };
 
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   };
