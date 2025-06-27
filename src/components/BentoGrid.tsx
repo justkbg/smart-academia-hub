@@ -118,7 +118,7 @@ const BentoGrid = () => {
     }
   };
 
-  const item: Variants = {
+  const itemVariant: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 }
   };
@@ -146,7 +146,7 @@ const BentoGrid = () => {
             <motion.div
               key={index}
               className={`${item.size} ${item.color} rounded-2xl p-6 hover:shadow-lg transition-all duration-300 overflow-hidden relative group hover:-translate-y-1`}
-              variants={item}
+              variants={itemVariant}
             >
               <Link to={item.link} className="absolute inset-0 z-10" aria-label={item.title}></Link>
               <div className="relative z-0">
