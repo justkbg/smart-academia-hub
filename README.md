@@ -1,69 +1,81 @@
-# Welcome to your Lovable project
+# UPSA Smart Attendance System
 
-## Project info
+## Overview
+A QR-based attendance system designed to improve how student attendance is recorded and managed at the University of Professional Studies, Accra (UPSA).
 
-**URL**: https://lovable.dev/projects/930334bd-8a5f-4fde-9a24-6f13d8cb9f78
+This project focuses on replacing manual attendance methods with a faster, more reliable digital system.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Problem
+Traditional attendance systems in universities are:
+- Time-consuming for lecturers
+- Easy to manipulate (proxy attendance)
+- Difficult to track and analyze over time
 
-**Use Lovable**
+This creates inefficiencies in classroom management and student accountability.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/930334bd-8a5f-4fde-9a24-6f13d8cb9f78) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## Solution
+This system introduces a QR-based check-in process that allows students to register attendance quickly and securely during lectures.
 
-**Use your preferred IDE**
+Each session generates a unique QR code that students scan to mark attendance in real time.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Key Features
+- QR code-based attendance marking  
+- Real-time attendance recording  
+- Simple and responsive user interface  
+- Session-based tracking system  
+- Designed for scalability across departments and courses  
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## How It Works
+1. Lecturer generates a session QR code  
+2. Students scan the QR code using their devices  
+3. Attendance is recorded instantly in the system  
+4. Data is stored for tracking and reporting  
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## Tech Stack
+- React  
+- TypeScript  
+- Vite  
+- Tailwind CSS  
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## Current Status
+Prototype stage.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+The core user interface and QR attendance flow are implemented.  
+Backend integration, authentication, and analytics features are planned next.
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Why This Project Matters
+This project is part of a broader goal to explore how digital systems can improve academic administration in universities.
 
-## What technologies are used for this project?
+It is not just a classroom exercise, but a step toward building scalable educational technology solutions.
 
-This project is built with .
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Future Improvements
+- User authentication (students and lecturers)  
+- Attendance analytics dashboard  
+- AI-based attendance insights  
+- Multi-course and department support  
+- Mobile optimization  
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/930334bd-8a5f-4fde-9a24-6f13d8cb9f78) and click on Share -> Publish.
+## Preview
+Early UI screens of the system:
 
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+![Dashboard](image.png)
+![QR Flow](Screenshot 2026-05-02 122654.png)
+![Attendance Interface](Screenshot 2026-05-02 122622.png)
